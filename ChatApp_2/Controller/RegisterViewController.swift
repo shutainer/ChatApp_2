@@ -33,6 +33,8 @@ class RegisterViewController: UIViewController {
         //新規登録
         Auth.auth().createUser(withEmail: emailTextField.text!
         , password: passwordTextField.text!) { (user, error) in
+            
+            //以下はオプショナルバインディングで書き換えられるか？？
             if error != nil {
                 print(error)
             }else {
