@@ -133,8 +133,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //文字数15文字 制限
         if messageTextField.text!.count > 15 {
             print("注意!15文字以上です！")
+            
+            //アラート表示
+            let alert: UIAlertController = UIAlertController(title: "文字数超過", message: "15文字以内にしてください", preferredStyle: .alert)
+            let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel) { (action) in
+                print("キャンセル")
+            }
+            alert.addAction(defaultAction)
+            self.present(alert, animated: true, completion: nil)
             return
         }
+        
+        
         
         let chatDB = Database.database().reference().child("chats")
         
