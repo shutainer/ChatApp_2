@@ -13,7 +13,9 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     
     @IBOutlet weak var messageLabel: UILabel!
+    
     @IBOutlet weak var userName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
