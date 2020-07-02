@@ -27,7 +27,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = selff
+        tableView.delegate = self
         tableView.dataSource = self
         messageTextField.delegate = self
         tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "Cell")
@@ -91,7 +91,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! CustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)  as! CustomCell
         
         cell.messageLabel.text = chatArray[indexPath.row].message
 
@@ -137,6 +137,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         let chatDB = Database.database().reference().child("chats")
+        
         //キーバリュー型で内容を送信(dictionary)
         let messageInfo = ["sender": Auth.auth().currentUser?.email, "message": messageTextField.text!]
         
